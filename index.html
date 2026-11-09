@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hop & Pop! - Chupa Chups Family Hop-Off at Stade de France</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="brand-logo">
+        <div class="logo-badge">Chupa Chups</div>
+        <span class="logo-text">Hop & Pop!</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">The Event</a></li>
+        <li><a href="#zones">Relay Zones</a></li>
+        <li><a href="#arcade">Hop Arcade</a></li>
+        <li><a href="#register">Register Team</a></li>
+      </ul>
+      <a href="#register" class="btn-primary">Join the Hop</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="about">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <span class="tagline">Forever Fun Presents</span>
+        <h1 class="hero-title">The Ultimate Family Hop-Off!</h1>
+        <p class="hero-description">
+          We are taking over the iconic <strong>Stade de France</strong>! Gear up in giant lollipop wrapper sacks, bounce down the Olympic track, and help us smash a Guinness World Record.
+        </p>
+        <div class="hero-cta">
+          <a href="#register" class="btn-primary">Register Your Squad</a>
+          <a href="#arcade" class="btn-secondary">Practice in Game</a>
+        </div>
+        
+        <!-- Live Countdown -->
+        <div class="countdown-card">
+          <div class="time-box">
+            <span class="number" id="days">45</span>
+            <span class="label">Days</span>
+          </div>
+          <div class="time-box">
+            <span class="number" id="hours">12</span>
+            <span class="label">Hours</span>
+          </div>
+          <div class="time-box">
+            <span class="number" id="minutes">34</span>
+            <span class="label">Mins</span>
+          </div>
+          <div class="time-box">
+            <span class="number" id="seconds">50</span>
+            <span class="label">Secs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-graphic">
+        <div class="event-badge-card">
+          <div class="stadium-icon">🏟️</div>
+          <h3>Stade de France</h3>
+          <p><strong>Date:</strong> Summer 2027</p>
+          <p><strong>Format:</strong> 4 x 100m Sack Relay</p>
+          <p><strong>Capacity:</strong> 5,000 Family Hoppers</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Guinness World Record Tracker -->
+  <section class="record-tracker">
+    <div class="container tracker-wrapper">
+      <h2>🏆 Guinness World Record Tracker</h2>
+      <p>Target: 5,000 Synchronized Sack Hoppers at Stade de France</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progressFill"></div>
+      </div>
+      <p><strong id="registeredCount">3,842</strong> / 5,000 Registered Spot</p>
+    </div>
+  </section>
+
+  <!-- Relay Zones Section -->
+  <section class="zones-section" id="zones">
+    <div class="container">
+      <h2 class="section-title">The 400m Flavor Relay</h2>
+      <p class="section-subtitle">Four legs. Four legendary flavors. Infinite fun.</p>
+
+      <div class="zone-tabs">
+        <button class="tab-btn active" onclick="switchZone(0)">Leg 1: Strawberry</button>
+        <button class="tab-btn" onclick="switchZone(1)">Leg 2: Cola Rush</button>
+        <button class="tab-btn" onclick="switchZone(2)">Leg 3: Vanilla Crunch</button>
+        <button class="tab-btn" onclick="switchZone(3)">Leg 4: Apple Duo</button>
+      </div>
+
+      <div class="zone-content" id="zoneDisplay">
+        <div class="zone-info">
+          <h3 id="zoneTitle">Leg 1: Strawberry Burst (Kids 100m)</h3>
+          <p id="zoneDesc">The ultimate explosive start! Junior racers hop in lightweight strawberry wrapper sacks to set the pace for their team.</p>
+          <ul class="zone-specs">
+            <li><strong>Distance:</strong> 100 Meters</li>
+            <li><strong>Participant:</strong> Kid Racer (Ages 6 - 14)</li>
+            <li><strong>Gear:</strong> Strawberry Twist-Top Sack</li>
+          </ul>
+        </div>
+        <div class="sack-preview" id="sackPreview" style="background-color: #FFE6E8;">
+          🍓 Strawberry Wrapper Sack
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mini Game Section -->
+  <section class="game-section" id="arcade">
+    <div class="container">
+      <h2 class="section-title">Hop Arcade Training</h2>
+      <p class="section-subtitle">Press <strong>SPACEBAR</strong> or tap the screen to jump over obstacles on the Stade de France track!</p>
+
+      <div class="game-container">
+        <canvas id="gameCanvas" width="760" height="300"></canvas>
+        <div class="game-controls">
+          <button class="btn-primary" onclick="startGame()">Start Race</button>
+          <div class="score-board">Score: <span id="gameScore">0</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Registration & Live Bib Customizer -->
+  <section class="register-section" id="register">
+    <div class="container">
+      <h2 class="section-title">Register Your Family Team</h2>
+      <p class="section-subtitle">Design your official race bib and lock in your spots at Stade de France!</p>
+
+      <div class="register-grid">
+        <form class="registration-form" id="regForm">
+          <div class="form-group">
+            <label for="teamName">Family / Team Name</label>
+            <input type="text" id="teamName" value="The Hopping Heroes" required oninput="updateBib()">
+          </div>
+
+          <div class="form-group">
+            <label for="bibNumber">Desired Bib Number</label>
+            <input type="number" id="bibNumber" value="77" min="1" max="9999" required oninput="updateBib()">
+          </div>
+
+          <div class="form-group">
+            <label for="flavorChoice">Favorite Chupa Chups Flavor</label>
+            <select id="flavorChoice" onchange="updateBib()">
+              <option value="Strawberry Burst">Strawberry Burst</option>
+              <option value="Cola Blast">Cola Blast</option>
+              <option value="Creamy Vanilla">Creamy Vanilla</option>
+              <option value="Green Apple">Green Apple</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="squadSize">Number of Hoppers (2 - 4)</label>
+            <select id="squadSize">
+              <option value="2">2 (Duo Squad)</option>
+              <option value="3">3 (Trio Squad)</option>
+              <option value="4" selected>4 (Full Relay Squad)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%;">Claim Your Race Pass</button>
+        </form>
+
+        <!-- Live Bib Preview -->
+        <div class="bib-preview-container">
+          <div class="bib-card">
+            <div class="bib-header">CHUPA CHUPS STADE DE FRANCE</div>
+            <div class="bib-team-name" id="previewTeam">The Hopping Heroes</div>
+            <div class="bib-number" id="previewBib">#77</div>
+            <div class="bib-flavor-tag" id="previewFlavor">Strawberry Burst</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="brand-logo">
+          <div class="logo-badge">Chupa Chups</div>
+          <span class="logo-text" style="color: var(--cc-yellow);">Hop & Pop!</span>
+        </div>
+        <p>Bringing Forever Fun to Stade de France!</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2027 Chupa Chups Brand Activation Campaign. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
